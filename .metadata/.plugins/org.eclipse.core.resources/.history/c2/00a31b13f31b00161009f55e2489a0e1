@@ -1,0 +1,63 @@
+package lab7;
+
+public class Node {
+	private String word;
+	private int count;
+	private Node next;
+	
+	
+	public Node(String word) {
+		this.word = word;
+		this.count = 1;
+		this.next = null;
+	}
+
+
+	public String getWord() {
+		return word;
+	}
+
+
+	public void setWord(String word) {
+		this.word = word;
+	}
+
+
+	public int getCount() {
+		return count;
+	}
+
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+
+	public Node getNext() {
+		return next;
+	}
+
+
+	public void setNext(Node next) {
+		this.next = next;
+	}
+	
+
+	@Override
+	public String toString() {
+		return "* " + word + " | Count: " + count;
+	}
+	
+	public int hashCode() {
+		//handle null words?
+		char fLetter = this.word.toUpperCase().charAt(0);
+//		System.out.println("index " + (int)fLetter);
+		int index = (int)fLetter-65;
+//		if (index<0 || index>26) {
+//			index=0;
+//		}
+		return index;
+	}
+	
+	
+}

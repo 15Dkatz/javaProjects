@@ -1,0 +1,8 @@
+package lab7;
+
+public class Node {
+	private String word;
+	private int count;
+	private Node next;
+	
+}

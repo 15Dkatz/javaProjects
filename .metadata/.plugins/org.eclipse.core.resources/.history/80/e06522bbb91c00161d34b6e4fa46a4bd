@@ -1,0 +1,130 @@
+package lab7;
+
+import java.io.BufferedReader;
+//import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+//import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
+
+public class CS112HashMap {
+	//	To organize your data, you will implement a HashMap using an array of size 26 elements. Create a new HashMap class called CS112HashMap. The hashcode function will be very straightforward. Use the first letter of the word to obtain the index into the hashmap array. For example, words starting with A map to 0 and words starting with Z map to 25.
+	//
+	//	The HashMap contains an array of nodes
+	//	Each Node contains a String attribute, a count variable and a reference to the next node. The count variable keeps track of the number of times that word has been seen.
+	//	
+	//	The HashMap must have the following methods. 
+	//
+	//	add - To add a new Node to the HashMap. If a word already maps to the location in the array, then use a linked list to add that element to the same bucket but at the end of the linked list.
+	//	find - Return the count if the user-specified word is found in the hashmap and -1 if the word is not found in the hashmap.
+	//	print - Print the hashmap such that all the words and their corresponding values are printed on the screen. Note: This can be very helpful for debugging. So do this first after the add method.
+	
+	//each linkedList represents a respective letter
+	//the linkedList comprises of Nodes of word
+	//each Node holds the count
+	
+	
+	private LinkedList[] hashMap = new LinkedList[26];
+	
+	public CS112HashMap() {
+		//initialize all linkedLists
+		for (int i=0; i<26; i++) {
+			hashMap[i] = new LinkedList();
+		}
+	}
+	
+	public void add(Node newNode) {
+		int index = newNode.hashCode();
+		hashMap[index].insert(newNode);
+	}
+	
+	public void print() {
+		int p = 0;
+		while (p<26) {
+			hashMap[p].print();
+			p++;
+		};
+		
+	}
+	
+	public void technicalPrint() {
+		int p = 0;
+		while (p<26) {
+			hashMap[p].technicalPrint();
+			p++;
+		};
+	}
+	
+	public void populate(String textFile) {
+		for (int i=0; i<26; i++) {
+			hashMap[i] = new LinkedList();
+		}
+		
+		//*** manually adding in stop Words to this set, for this long block of code
+		String[] stopWordsArr = {"a", "about", "above", "after", "again", "against", "all", "am", "an", "and"};
+		Set<String> stopWords = new HashSet<String>();
+		//manually adding in stopWords
+		for (String word : stopWordsArr) {
+			stopWords.add(word);
+		}
+		stopWOrds.add("about");
+		
+		//***
+		
+		try {
+
+			FileReader fReader = new FileReader(textFile);
+			
+			BufferedReader buffReader = new BufferedReader(fReader);
+			
+			String line = "";
+			
+			while (line!=null) {
+				line = buffReader.readLine();
+		
+				if (line != null && line.length()>1) {
+					//eliminating all possible double spaces
+					line = line.replaceAll("\\s+", " ");
+					String[] words = line.split(" ");
+					
+					for (String word : words) {
+						word = word.trim();
+						word = word.replaceAll("[^A-Za-z]", "");
+						word = word.replaceAll(" ", "");
+						if (word!=null&&word.length()>0) {
+							word = word.substring(0,1).toUpperCase() + word.substring(1, word.length()).toLowerCase();
+							
+							
+							//consider stopWords	
+							if (!stopWords.contains(word)) {
+								this.add(new Node(word));
+							}
+						}
+					}
+				}
+			} 
+			
+			buffReader.close();
+			
+		} catch(FileNotFoundException exception) {
+			System.out.println("Unable to open " + textFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public int find(String query) {
+		// get hashCode of query to limit which LinkedList you need to search
+		Node queryNode = new Node(query);
+		int index = queryNode.hashCode();
+		Node foundNode = hashMap[index].search(new Node(query));
+		if (foundNode!=null) {
+			return foundNode.getCount();
+		} else {
+			return -1;
+		}
+	}
+	
+}

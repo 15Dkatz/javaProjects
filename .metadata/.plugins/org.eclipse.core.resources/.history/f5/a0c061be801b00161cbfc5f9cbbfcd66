@@ -1,0 +1,15 @@
+package lab7;
+
+public class Node {
+	private String word;
+	private int count;
+	private Node next;
+	
+	
+	public Node(String word, int count, Node next) {
+		this.word = word;
+		this.count = count;
+		this.next = next;
+	}
+	
+}

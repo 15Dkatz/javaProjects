@@ -1,0 +1,44 @@
+package lab7;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
+
+public class SetFiller {
+	private Set<String> stopWords = new HashSet<String>();
+
+	public SetFiller() {
+
+	}
+	
+	public Set<String> fillStopWords(String file) throws IOException {
+		FileReader fReader = new FileReader(file);
+		
+		BufferedReader buffReader = new BufferedReader(fReader);
+		String line = "";
+		while (line!=null) {
+			
+			//capitalize
+			
+			if (line!=null&&line.length()>0) {
+				//capitalizing
+				line = line.trim();
+				line = line.replaceAll("[^A-Za-z]", "");
+				line = line.replaceAll(" ", "");
+				line = line.substring(0,1).toUpperCase() + line.substring(1, line.length()).toLowerCase();
+				stopWords.add(line);
+				
+			}
+			
+			line = buffReader.readLine();
+			
+		}
+		
+		buffReader.close();
+		return stopWords;
+	}
+	
+}

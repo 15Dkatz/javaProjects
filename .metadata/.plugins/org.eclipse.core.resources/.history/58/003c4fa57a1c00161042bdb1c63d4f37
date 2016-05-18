@@ -1,0 +1,256 @@
+package lab7;
+
+public class LinkedList {
+	private Node root;
+//	private Node previous;
+	private Node current;
+	
+	
+	public LinkedList() {
+		this.root = null;
+		this.current = null;
+	}
+
+	
+	public void print() {
+		this.current = this.root;
+		if (this.root!=null) {
+			recursivePrint(this.current);
+		}
+	}
+	
+	public void recursivePrint(Node currentNode) {
+		if (currentNode!=null) {
+			System.out.println(currentNode.toString());
+		}
+		if (currentNode.getNext()!=null) {
+			recursivePrint(currentNode.getNext());
+		}
+	}
+	
+//	insert method still needs improvement
+	public void insert(Node newNode) {
+		//sorted Insert
+		if (this.root==null) {
+			this.root = newNode;
+			this.current = this.root;
+			return;
+		} else {
+			boolean setNext = true;
+			if (this.root.compareTo(newNode)<0) {
+				Node rootNext = this.root.getNext();
+//				
+				this.root = newNode;
+				this.root.setNext(rootNext);
+				setNext = false;
+				
+				System.out.println(newNode.getWord() + " should be the root");
+			}
+			
+			
+			this.current = this.root;
+			
+			while (this.current.getNext()!=null) {
+				
+				int wordsCompared = this.current.compareTo(newNode);
+				
+				if (wordsCompared==0&&setNext==true) {
+					this.current.setCount(this.current.getCount()+1);
+					setNext = false;
+				}
+				
+				if (wordsCompared<0) {
+//					Node newNext = this.current.getNext();
+//					this.current.setNext(newNode);
+//					newNode.setNext(newNext);
+//					setNext = false;
+					
+					System.out.println(newNode.getWord() + " goes before " + this.current.getWord());
+				}
+//				
+				
+//				if (wordsCompared<0)
+				
+				
+				this.current = this.current.getNext();
+			}
+			
+			if (setNext==true) {
+				this.current.setNext(newNode);
+			}
+			
+			
+			
+			
+//			// if newNode belongs before the root, make it the root
+//			if (newNode.getWord().compareTo(this.root.getWord())<0) {
+//				Node nextNode = this.root.getNext();
+//				this.root = newNode;
+//				this.root.setNext(nextNode);
+//			} else {
+//				this.current = this.root;
+//				
+//				
+//				while (this.current!=null) {
+//					
+//					System.out.println("this.current " + this.current);
+////					// insert at proper place
+////					int wordsComparison = newNode.getWord().compareTo(this.current.getWord());
+////					
+////					if (this.current.getNext()!=null) {
+////						int nextWordsComparison = newNode.getWord().compareTo(this.current.getNext().getWord());
+////						
+////						if (wordsComparison>0&&nextWordsComparison<0) {
+////	//						insert
+////							Node newNext = this.current.getNext();
+////							this.current.setNext(newNode);
+////							newNode.setNext(newNext);
+////						}
+////					} else {
+////						this.current.setNext(newNode);\b
+////					}
+//					
+//					
+//					
+//					this.current = this.current.getNext();
+//				}
+//				
+//			}
+//			
+			
+			
+			
+//			Node lastNode = null;
+//			Node currentNode = null;
+//			for (currentNode = this.root; currentNode != null && currentNode.getWord().compareTo(newNode.getWord())<0;) {
+//				lastNode = newNode;
+//				currentNode = currentNode.getNext();
+//			}
+//			
+//			lastNode.setNext(newNode);
+//			newNode.setNext(currentNode);
+//			
+		}
+		
+//		Node sortedOrder = newNode;
+		
+		
+		
+	
+//		else if (newNode.getWord().compareTo(this.root.getWord())<0) {
+//			newNode.setNext(this.root);
+//			this.root = newNode;
+//		}
+//		
+//		
+//		else {
+//			Node afterNode = this.root.getNext();
+//			Node beforeNode = this.root;
+//			
+//			while (afterNode!=null) {
+//				int wordsCompared = newNode.getWord().compareTo(afterNode.getWord());
+//				if (wordsCompared<0) {
+//					break;
+//				}
+//				// +count if wordsCompared==0
+//				else if (wordsCompared == 0) {
+//					afterNode.setCount(afterNode.getCount()+1);
+//				}
+//				afterNode = afterNode.getNext();
+//			}
+//			
+//			newNode.setNext(beforeNode.getNext());
+//			beforeNode.setNext(newNode);
+			
+			
+//			this.current = this.root;
+//			
+//			
+//			while (this.current!=null) {
+//				int wordsCompared = newNode.getWord().compareTo(this.current.getWord());
+//				
+//				if (wordsCompared<0) {
+//					this.current.setNext();
+//					
+//				}
+//			}
+			
+			
+			
+//			
+//			while(this.current!=null) {
+//				
+//				int wordsCompared = newNode.getWord().compareTo(this.current.getWord());
+//				System.out.println("" + newNode.getWord() + " to " + this.current.getWord() + " |* " + wordsCompared );
+//				if (wordsCompared == 0) {
+//					this.current.setCount(this.current.getCount()+1);
+//				}
+//				
+//				if (wordsCompared<0) {
+//					Node rootNext = this.root.getNext();
+//					this.root = newNode;
+//					this.root.setNext(rootNext);
+//					
+//				}
+//				
+//				if (wordsCompared>0) {
+//					Node nextNode = this.current.getNext();
+//					newNode.setNext(nextNode);
+//					this.current.setNext(newNode);
+////					this.current = this.current.getNext();
+////					newNode.setNext(nextNode);
+//				}
+//				
+//				this.current = this.current.getNext();
+//			}
+
+			
+			
+			
+//			this.current = this.root;
+//			while(this.current.next!=null) {
+//				if (this.current.data == target) {
+//					Node prevNode = this.current;
+//					newNode.next = prevNode.next;
+//					this.current.next = newNode;
+//					this.current = newNode;
+//					this.previous = prevNode;
+//				}
+//				this.current = this.current.next;
+//			}
+			
+			
+			
+			
+//
+//			while (this.current!=null) {
+//				
+//				int wordsCompared = newNode.getWord().compareTo(this.current.getWord());
+////				boolean setNext = true;
+//				System.out.println("" + newNode.getWord() + " to " + this.current.getWord() + " |* " + wordsCompared );
+//				if (wordsCompared==0) {
+//					this.current.setCount(this.current.getCount()+1);
+////					setNext = false;
+//				}
+//
+//				if (this.current.getNext()!=null) {
+//					int nextWordsCompared = newNode.getWord().compareTo(this.current.getNext().getWord());
+//					if (nextWordsCompared<0) {
+//						Node newNext = this.current.getNext();
+//						this.current.setNext(newNode);
+//						this.current = this.current.getNext();
+//						this.current.setNext(newNext);
+//					}		
+//				}	
+//				if (wordsCompared>0&&this.current.getNext()==null) {
+//					this.current.setNext(newNode);
+//				}
+//				
+//				this.current = this.current.getNext();
+//			}
+//			
+//		}
+	}
+
+	
+}

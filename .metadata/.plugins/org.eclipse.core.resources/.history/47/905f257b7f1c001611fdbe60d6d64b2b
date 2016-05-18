@@ -1,0 +1,90 @@
+package lab7;
+
+public class LinkedList {
+	private Node root;
+	private Node previous;
+	private Node current;
+	
+	
+	public LinkedList() {
+		this.root = null;
+		this.current = null;
+	}
+
+	
+	public void print() {
+		this.current = this.root;
+		if (this.root!=null) {
+			recursivePrint(this.current);
+		}
+	}
+	
+	public void recursivePrint(Node currentNode) {
+		if (currentNode!=null) {
+			System.out.println(currentNode.toString());
+		}
+		if (currentNode.getNext()!=null) {
+			recursivePrint(currentNode.getNext());
+		}
+	}
+	
+//	insert method still needs improvement
+	public void insert(Node newNode) {
+		//sorted Insert
+		if (this.root==null) {
+			this.root = newNode;
+			this.current = this.root;
+			return;
+		} else {
+			boolean setNext = true;
+			if (this.root.compareTo(newNode)<0) {
+				Node rootNext = this.root;
+//				
+				this.root = newNode;
+				this.root.setNext(rootNext);
+				setNext = false;
+				
+				System.out.println(newNode.getWord() + " should be the root");
+			}
+			
+			
+			this.current = this.root;
+			
+			while (this.current.getNext()!=null) {
+				
+				int wordsCompared = this.current.compareTo(newNode);
+				
+				if (wordsCompared==0&&setNext==true) {
+					this.current.setCount(this.current.getCount()+1);
+					System.out.println("Adding count to " + newNode.getWord());
+					setNext = false;
+					this.current = null;
+					return;
+				}
+				
+				if (wordsCompared<0&&setNext==true) {
+					System.out.println(newNode.getWord() + " goes before " + this.current.getWord());
+//					System.out.println("previous node: " + this.previous.getWord());
+					Node newNext = this.current;
+					
+					this.previous.setNext(newNode);
+					newNode.setNext(newNext);
+					setNext = false;
+					
+					
+				}
+				
+				this.previous = this.current;
+				this.current = this.current.getNext();
+			}
+			
+			if (setNext==true) {
+				this.current.setNext(newNode);
+			}
+			
+		}
+			
+	}
+
+	
+}

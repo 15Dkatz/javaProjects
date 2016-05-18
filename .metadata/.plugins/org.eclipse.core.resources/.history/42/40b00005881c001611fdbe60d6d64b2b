@@ -1,0 +1,67 @@
+package lab7;
+
+import java.util.Scanner;
+
+public class Driver {
+	public static void main(String[] args) {
+		//testing
+//		CS112HashMap testMap = new CS112HashMap();
+//		
+//		testMap.add(new Node("Apple"));
+//		testMap.add(new Node("Aple"));
+//		testMap.add(new Node("Zebra"));
+//		testMap.add(new Node("Beast"));
+//		testMap.add(new Node("Dog"));
+//		testMap.add(new Node("Driv"));
+//		testMap.add(new Node("Cat"));
+//		
+		
+//		testMap.print();
+		
+		// *** Delete Test Code above *** //
+		CS112HashMap driverMap = new CS112HashMap();
+		//reading from the command line, and using the .txt file to populate the hashmap
+		if (args[0]!=null) {
+			driverMap.populate(args[0]);
+//			driverMap.technicalPrint();
+		} else {
+			System.out.println("Please rerun the program by appending a text file to the command line arguments.");
+		}
+		
+		int option = 0;
+		
+		Scanner sc = new Scanner(System.in);
+		
+		do {
+			System.out.println("*** Word Counter");
+			System.out.println("This program just counted the words in the text file you just specified: " + args[0]);
+			System.out.println("Please choose an option:");
+			System.out.println("(1) Print the words of length greater than four, and of frequency greater than 5.");
+			System.out.println("(2) Find a specific word.");
+			System.out.println("(3) Exit the program.");
+			
+			option = sc.nextInt();
+			
+			
+			switch(option) {
+				case 1:
+					driverMap.technicalPrint();
+					break;
+				case 2:
+					break;
+				default:
+					break;
+			}
+			
+			
+			
+			
+		} while (option!=3);
+		
+		System.out.println("Exiting the word-counting program. ***");
+		System.exit(0);
+		
+
+		
+	}
+}

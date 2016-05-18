@@ -1,0 +1,39 @@
+<songNumber value = 4/> 
+<songs> 
+  <song> 
+    <song title = Famous (feat. Rihanna)> 
+    <artist name = Kanye West/> 
+    <album title = The Life of Pablo/> 
+    <producer name = /> 
+    <genre title = Hip-Hop/Rap/> 
+    <rating value = /> 
+  </song> 
+
+  <song> 
+    <song title = I'm a sir> 
+    <artist name = Frau/> 
+    <album title = Starlit Carousel/> 
+    <producer name = /> 
+    <genre title = /> 
+    <rating value = /> 
+  </song> 
+
+  <song> 
+    <song title = Ultralight Beam (feat. Chance the Rapper & Kirk Franklin)> 
+    <artist name = Kanye West/> 
+    <album title = The Life of Pablo/> 
+    <producer name = /> 
+    <genre title = Hip-Hop/Rap/> 
+    <rating value = /> 
+  </song> 
+
+  <song> 
+    <song title = Piano Sonata No.2 in B flat minor op.35 (Rachmaninoff) - Marche funebre> 
+    <artist name = Frédéric Chopin/> 
+    <album title = Chopin - Piano Sonata No.2 in B flat minor op.35 (Rachmaninoff)/> 
+    <producer name = /> 
+    <genre title = /> 
+    <rating value = /> 
+  </song> 
+
+</songs> 

@@ -1,0 +1,75 @@
+package lab7;
+
+import java.util.Scanner;
+
+public class Driver {
+	public static void main(String[] args) {
+		//testing
+//		CS112HashMap testMap = new CS112HashMap();
+//		
+//		testMap.add(new Node("Apple"));
+//		testMap.add(new Node("Aple"));
+//		testMap.add(new Node("Zebra"));
+//		testMap.add(new Node("Beast"));
+//		testMap.add(new Node("Dog"));
+//		testMap.add(new Node("Driv"));
+//		testMap.add(new Node("Cat"));
+//		
+		
+//		testMap.print();
+		
+		// *** Delete Test Code above *** //
+		CS112HashMap driverMap = new CS112HashMap();
+		//reading from the command line, and using the .txt file to populate the hashmap
+		if (args[0]!=null) {
+			driverMap.populate(args[0]);
+//			driverMap.technicalPrint();
+		} else {
+			System.out.println("Please rerun the program by appending a text file to the command line arguments.");
+		}
+		
+		int option = 0;
+		
+		Scanner sc = new Scanner(System.in);
+		
+		do {
+			System.out.println("\n***| Word Counter |***");
+			System.out.println("This program counts the words of your .txt file \n\t** " + args[0] + " **");
+			System.out.println("Please choose an option:");
+			System.out.println("(1) PRINT all words longer than 4, and that have a frequency greater than 5.");
+			System.out.println("(2) FIND the frequency of a specific word.");
+			System.out.println("(3) EXIT the program.");
+			
+			option = sc.nextInt();
+			
+			
+			switch(option) {
+				case 1:
+					driverMap.technicalPrint();
+					break;
+				case 2:
+					
+					//take the nextword from the scanner
+					//input that word into the CS112 find function
+					//find function uses hashcode to limit the LinkedList search, then goes through hashcode linkedlist, but only prints the find if it's greather than 4 length and frequency higher than 5
+					//else it returns -1
+					System.out.println("Find a word's count in " + args[0]);
+					String query = sc.next();
+					System.out.println(driverMap.find(query));
+					break;
+				default:
+					break;
+			}
+			
+			
+			
+			
+		} while (option!=3);
+		
+		System.out.println("Exiting the word-counting program. ***");
+		System.exit(0);
+		
+
+		
+	}
+}

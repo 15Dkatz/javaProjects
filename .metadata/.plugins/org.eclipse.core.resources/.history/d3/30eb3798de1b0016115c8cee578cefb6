@@ -1,0 +1,28 @@
+package lab7;
+
+import java.io.File;
+
+public class Driver {
+	public static void main(String[] args) {
+		//testing
+		CS112HashMap testMap = new CS112HashMap();
+		
+		testMap.add(new Node("Apple"));
+		testMap.add(new Node("Apple"));
+		testMap.add(new Node("Zebra"));
+		testMap.add(new Node("Beast"));
+		testMap.add(new Node("Dog"));
+		testMap.add(new Node("Cat"));
+		
+		
+		testMap.print();
+		
+		//reading from the command line, and using the .txt file to populate the hashmap
+		if (args[0]!=null) {
+			testMap.populate(new File(args[0]));
+		} else {
+			System.out.println("Please rerun the program by appending a text file to the command line arguments.");
+		}
+		
+	}
+}

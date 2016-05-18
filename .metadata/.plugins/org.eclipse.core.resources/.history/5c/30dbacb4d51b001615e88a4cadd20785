@@ -1,0 +1,18 @@
+package lab7;
+
+public class Driver {
+	public static void main(String[] args) {
+		//testing
+		CS112HashMap testMap = new CS112HashMap();
+		
+		testMap.add(new Node("Yapple"));
+//		testMap.add(new Node("Apple"));
+//		testMap.add(new Node("Aebra"));
+		testMap.add(new Node("Beast"));
+		testMap.add(new Node("Dog"));
+		testMap.add(new Node("Cat"));
+		
+		
+		testMap.print();
+	}
+}
